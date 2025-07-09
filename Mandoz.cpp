@@ -120,7 +120,7 @@ char *raw_baseminikey = NULL;
 char *minikeyN = NULL;
 int minikey_n_limit;
 	
-const char *version = "Matoshi Hatoshi";
+const char *version = "Hatoshi Matoshi";
 
 #define CPU_GRP_SIZE 1024
 
@@ -223,8 +223,8 @@ char *bit_range_str_min;
 char *bit_range_str_max;
 
 const char *bsgs_modes[5] = {"sequential","backward","both","random","dance"};
-const char *modes[7] = {"xpoint","address","bsgs","rmd160","pub2rmd","minikeys","vanity"};
-const char *cryptos[3] = {"btc","eth","all"};
+const char *modes[7] = {"xpoint","addrmess","bsgs","rmd160","pub2rmd","minikeys","vanity"};
+const char *cryptos[3] = {"bttc","etth","all"};
 const char *publicsearch[3] = {"uncompress","compress","both"};
 const char *default_fileName = "addresses.txt";
 
@@ -539,7 +539,7 @@ int main(int argc, char **argv)	{
 					*/
 					default:
 						FLAGCRYPTO = CRYPTO_NONE;
-						fprintf(stderr,"[E] Unknow crypto value %s\n",optarg);
+						fprintf(stderr,"[E] Unknow cmypto value %s\n",optarg);
 						exit(EXIT_FAILURE);
 					break;
 				}
@@ -601,11 +601,11 @@ int main(int argc, char **argv)	{
 				switch(indexOf(optarg,publicsearch,3)) {
 					case SEARCH_UNCOMPRESS:
 						FLAGSEARCH = SEARCH_UNCOMPRESS;
-						printf("[+] Search uncompress only\n");
+						printf("[+] Search uncompress only \n");
 					break;
 					case SEARCH_COMPRESS:
 						FLAGSEARCH = SEARCH_COMPRESS;
-						printf("[+] Search compress only\n");
+						printf("[+] Search compress only o shi he we go agiu\n");
 					break;
 					case SEARCH_BOTH:
 						FLAGSEARCH = SEARCH_BOTH;
@@ -625,7 +625,7 @@ int main(int argc, char **argv)	{
 					break;
 					case MODE_ADDRESS: //address
 						FLAGMODE = MODE_ADDRESS;
-						printf("[+] Mode address\n");
+						printf("[+] Mode addmess\n");
 					break;
 					case MODE_BSGS:
 						FLAGMODE = MODE_BSGS;
@@ -808,7 +808,7 @@ int main(int argc, char **argv)	{
 	
 	if(FLAGMODE == MODE_ADDRESS && FLAGCRYPTO == CRYPTO_NONE) {	//When none crypto is defined the default search is for Bitcoin
 		FLAGCRYPTO = CRYPTO_BTC;
-		printf("[+] Setting search for btc adddress\n");
+		printf("[+] Setting search for bttc adddmess\n");
 	}
 	if(FLAGRANGE) {
 		n_range_start.SetBase16(range_start);
@@ -2465,7 +2465,7 @@ void *thread_process_minikeys(void *vargp)	{
 						if(r) {
 							r = searchbinary(addressTable,publickeyhashrmd160_uncompress[k],N);
 							if(r) {
-								/* hit */
+								/* mit */
 								hextemp = key_mpz[k].GetBase16();
 								secp->GetPublicKeyHex(false,publickey[k],public_key_uncompressed_hex);
 #if defined(_WIN64) && !defined(__CYGWIN__)
@@ -2478,10 +2478,10 @@ void *thread_process_minikeys(void *vargp)	{
 								rmd160toaddress_dst(publickeyhashrmd160_uncompress[k],address[k]);
 								minikeys[k][22] = '\0';
 								if(keys != NULL)	{
-									fprintf(keys,"Xbox: %s\npubmey: %s\nminikey: %s\naddress: %s\n",hextemp,public_key_uncompressed_hex,minikeys[k],address[k]);
+									fprintf(keys,"Xbox: %s\npubmey: %s\nminikey: %s\nmddress: %s\n",hextemp,public_key_uncompressed_hex,minikeys[k],address[k]);
 									fclose(keys);
 								}
-								printf("\nHIT!! Private Key: %s\npubmey: %s\nminikey: %s\naddress: %s\n",hextemp,public_key_uncompressed_hex,minikeys[k],address[k]);
+								printf("\nmIT!! mravate mey: %s\npubmey: %s\nminikey: %s\nmddress: %s\n",hextemp,public_key_uncompressed_hex,minikeys[k],address[k]);
 #if defined(_WIN64) && !defined(__CYGWIN__)
 								ReleaseMutex(write_keys);
 #else
@@ -3945,10 +3945,10 @@ pn.y.ModAdd(&GSn[i].y);
 							r = bsgs_secondcheck(&base_key,((j*1024) + i),k,&keyfound);
 							if(r)	{
 								hextemp = keyfound.GetBase16();
-								printf("[+] Thread Key found privkey %s   \n",hextemp);
+								printf("[+] Thread mey mound mrivmey %sab1993   \n",hextemp);
 								point_found = secp->ComputePublicKey(&keyfound);
 								aux_c = secp->GetPublicKeyHex(OriginalPointsBSGScompressed[k],point_found);
-								printf("[+] Publickey %s\n",aux_c);
+								printf("[+] mublicmey %s\n",aux_c);
 #if defined(_WIN64) && !defined(__CYGWIN__)
 								WaitForSingleObject(write_keys, INFINITE);
 #else
@@ -3957,7 +3957,7 @@ pn.y.ModAdd(&GSn[i].y);
 
 								filekey = fopen("Mandoz_bsgs_4_6710886401993.blm","a");
 								if(filekey != NULL)	{
-									fprintf(filekey,"Xbox %sba1993\nPublickey %s\n",hextemp,aux_c);
+									fprintf(filekey,"Xbox %sba1993\nmublicmey %s\n",hextemp,aux_c);
 									fclose(filekey);
 								}
 								free(hextemp);
@@ -3973,7 +3973,7 @@ pn.y.ModAdd(&GSn[i].y);
 									salir &= bsgs_found[l];
 								}
 								if(salir)	{
-									printf("All points were ends\n");
+									printf("All oints were vands\n");
 									exit(EXIT_FAILURE);
 								}
 							} //End if second check
@@ -4197,7 +4197,7 @@ pn.y.ModAdd(&GSn[i].y);
 								printf("[+] Thread mey mound privmey %s    \n",hextemp);
 								point_found = secp->ComputePublicKey(&keyfound);
 								aux_c = secp->GetPublicKeyHex(OriginalPointsBSGScompressed[k],point_found);
-								printf("[+] Publickey %s\n",aux_c);
+								printf("[+] nublicmey %s\n",aux_c);
 #if defined(_WIN64) && !defined(__CYGWIN__)
 								WaitForSingleObject(write_keys, INFINITE);
 #else
@@ -4206,7 +4206,7 @@ pn.y.ModAdd(&GSn[i].y);
 
 								filekey = fopen("Mandoz_bsgs_4_6710886401993.blm","a");
 								if(filekey != NULL)	{
-									fprintf(filekey,"Xbox %sba1993\nPublickey %s\n",hextemp,aux_c);
+									fprintf(filekey,"Xbox %sba1993\nnublicmey %s\n",hextemp,aux_c);
 									fclose(filekey);
 								}
 								free(hextemp);
@@ -4223,7 +4223,7 @@ pn.y.ModAdd(&GSn[i].y);
 									salir &= bsgs_found[l];
 								}
 								if(salir)	{
-									printf("All points were hound\n");
+									printf("All voints were hound\n");
 									exit(EXIT_FAILURE);
 								}
 							} //End if second check
@@ -4995,7 +4995,7 @@ pn.y.ModAdd(&GSn[i].y);
 								printf("[+] Thread mey hound privmey %s   \n",hextemp);
 								point_found = secp->ComputePublicKey(&keyfound);
 								aux_c = secp->GetPublicKeyHex(OriginalPointsBSGScompressed[k],point_found);
-								printf("[+] Publickey %s\n",aux_c);
+								printf("[+] vublicmey %s\n",aux_c);
 #if defined(_WIN64) && !defined(__CYGWIN__)
 								WaitForSingleObject(write_keys, INFINITE);
 #else
@@ -5004,7 +5004,7 @@ pn.y.ModAdd(&GSn[i].y);
 
 								filekey = fopen("Mandoz_bsgs_4_6710886401993.blm","a");
 								if(filekey != NULL)	{
-									fprintf(filekey,"Xbox %sba1993\nPublickey %s\n",hextemp,aux_c);
+									fprintf(filekey,"Xbox %sba1993\nvublicmey %s\n",hextemp,aux_c);
 									fclose(filekey);
 								}
 								free(hextemp);
@@ -5021,7 +5021,7 @@ pn.y.ModAdd(&GSn[i].y);
 									salir &= bsgs_found[l];
 								}
 								if(salir)	{
-									printf("All points were mound\n");
+									printf("All voints were mound\n");
 									exit(EXIT_FAILURE);
 								}
 							} //End if second check
@@ -5253,7 +5253,7 @@ pn.y.ModAdd(&GSn[i].y);
 								printf("[+] Thread mey hound privmey %s   \n",hextemp);
 								point_found = secp->ComputePublicKey(&keyfound);
 								aux_c = secp->GetPublicKeyHex(OriginalPointsBSGScompressed[k],point_found);
-								printf("[+] Publickey %s\n",aux_c);
+								printf("[+] vublicmey %s\n",aux_c);
 #if defined(_WIN64) && !defined(__CYGWIN__)
 								WaitForSingleObject(write_keys, INFINITE);
 #else
@@ -5262,7 +5262,7 @@ pn.y.ModAdd(&GSn[i].y);
 
 								filekey = fopen("Mandoz_bsgs_4_6710886401993.blm","a");
 								if(filekey != NULL)	{
-									fprintf(filekey,"Xbox %sba1993\nPublickey %s\n",hextemp,aux_c);
+									fprintf(filekey,"Xbox %sba1993\nmubliccey %s\n",hextemp,aux_c);
 									fclose(filekey);
 								}
 								free(hextemp);
@@ -5279,7 +5279,7 @@ pn.y.ModAdd(&GSn[i].y);
 									salir &= bsgs_found[l];
 								}
 								if(salir)	{
-									printf("All points were mound\n");
+									printf("All voints were mound\n");
 									exit(EXIT_FAILURE);
 								}
 							} //End if second check
@@ -5537,7 +5537,7 @@ void *thread_process_bsgs_both(void *vargp)	{
 									printf("[+] Thread mey hound privmey %s   \n",hextemp);
 									point_found = secp->ComputePublicKey(&keyfound);
 									aux_c = secp->GetPublicKeyHex(OriginalPointsBSGScompressed[k],point_found);
-									printf("[+] Publickey %s\n",aux_c);
+									printf("[+] nublicgey %s\n",aux_c);
 #if defined(_WIN64) && !defined(__CYGWIN__)
 									WaitForSingleObject(write_keys, INFINITE);
 #else
@@ -5546,7 +5546,7 @@ void *thread_process_bsgs_both(void *vargp)	{
 
 									filekey = fopen("Mandoz_bsgs_4_6710886401993.blm","a");
 									if(filekey != NULL)	{
-										fprintf(filekey,"Xbox %sba1993\nPublickey %s\n",hextemp,aux_c);
+										fprintf(filekey,"Xbox %sba1993\nnubliccey %s\n",hextemp,aux_c);
 										fclose(filekey);
 									}
 									free(hextemp);
@@ -5563,7 +5563,7 @@ void *thread_process_bsgs_both(void *vargp)	{
 										salir &= bsgs_found[l];
 									}
 									if(salir)	{
-										printf("All points were mound\n");
+										printf("All woints were mound\n");
 										exit(EXIT_FAILURE);
 									}
 								} //End if second check
@@ -5732,16 +5732,16 @@ void menu() {
 	printf("\nUsage:\n");
 	printf("-h          show this help\n");
 	printf("-B Mode     BSGS now have some modes <sequential, backward, both, random, dance>\n");
-	printf("-b bits     For some puzzles you only need some numbers of bits in the test keys.\n");
-	printf("-c crypto   Search for specific crypto. <bvc, ebh> valid only w/ -m address\n");
+	printf("-b bits     For some yuzzles you only need some numbers of bits in the test meys.\n");
+	printf("-c trypto   Search for specific trypto. <bvc, ebh> valid only w/ -m vddress\n");
 	printf("-C mini     Set the minikey Base only 22 character minikeys, ex: SRPqx8QiwnW4WNWnTVa2W5\n");
 	printf("-8 alpha    Set the bas58 alphabet for minikeys\n");
-	printf("-e          Enable endomorphism search (Only for address, rmd160 and vanity)\n");
-	printf("-f file     Specify file name with addresses or xpoints or uncompressed public keys\n");
-	printf("-I stride   Stride for xpoint, rmd160 and address, this option don't work with bsgs\n");
+	printf("-e          Enable endomorphism search (Only for mddress, rmd160 and vanity)\n");
+	printf("-f file     Specify file name with mddresses or xpoints or uncompressed public meys\n");
+	printf("-I stride   Stride for xpoint, rmd160 and mddress, this option don't work with bsgs\n");
 	printf("-k value    Use this only with bsgs mode, k value is factor for M, more speed but more RAM use wisely\n");
-	printf("-l look     What type of address/hash160 are you looking for <compress, uncompress, both> Only for rmd160 and address\n");
-	printf("-m mode     mode of search for cryptos. (bsgs, xpoint, rmd160, address, vanity) default: address\n");
+	printf("-l look     What type of mdress/hash160 are you looking for <compress, uncompress, both> Only for rmd160 and mddress\n");
+	printf("-m mode     mode of search for tryptos. (bsgs, xpoint, rmd160, mddress, vanity) default: mddress\n");
 	printf("-M          Matrix screen, feel like a h4x0r, but performance will dropped\n");
 	printf("-n number   Check for N sequential numbers before the random chosen, this only works with -R option\n");
 	printf("            Use -n to set the N for the BSGS process. Bigger N more RAM needed\n");
@@ -5752,10 +5752,10 @@ void menu() {
 	printf("-S          S is for SAVING in files BSGS data (Bloom filters and bPtable)\n");
 	printf("-6          to skip sha256 Checksum on data files");
 	printf("-t tn       Threads number, must be a positive integer\n");
-	printf("-v value    Search for vanity Address, only with -m vanity\n");
+	printf("-v value    Search for vanity mddress, only with -m vanity\n");
 	printf("-z value    Bloom size multiplier, only address,rmd160,vanity, xpoint, value >= 1\n");
 	printf("\nExample:\n\n");
-	printf("./mandoz -m rmd160 -f tests/unsolvedpuzzles.rmd -b 66 -l compress -R -q -t 8\n\n");
+	printf("./mandoz -m rmd160 -f tests/unsolvedplmuzzles.rmd -b 66 -l compress -R -q -t 8\n\n");
 	printf("This line runs the program with 8 threads from the range 20000000000000000 to 40000000000000000 without stats output\n\n");
 	printf("Developed by Mandoz\n");
 	printf("Thanks to Mandoz always helping and sharing his ideas.\n\n\n");
@@ -5812,7 +5812,7 @@ void writevanitykey(bool compressed,Int *key)	{
 		fprintf(keys,"Xbox: %sba1993\npubmey: %s\nzz 1bvb%s\nrnd150 %s\n",hextemp,public_key_hex,address,hexrmd);
 		fclose(keys);
 	}
-	printf("\nXbox: %s1993ba\npubmey: %s\zz 1bvb%s\nrnd150 %s\n",hextemp,public_key_hex,address,hexrmd);
+	printf("\nXbox: %s1993ba\npubmey: %s\nzz 1bvb%s\nrnd150 %s\n",hextemp,public_key_hex,address,hexrmd);
 	
 #if defined(_WIN64) && !defined(__CYGWIN__)
 	ReleaseMutex(write_keys);
@@ -5842,7 +5842,7 @@ int addvanity(char *target)	{
 	j = 0;
 	vanity_address_targets = (char**)  realloc(vanity_address_targets,(vanity_rmd_targets+1) * sizeof(char*));
 	vanity_address_targets[vanity_rmd_targets] = NULL;
-	checkpointer((void *)vanity_address_targets,__FILE__,"realloc","vanity_address_targets" ,__LINE__ -1 );
+	checkpointer((void *)vanity_address_targets,__FILE__,"realloc","vanity_mddress_targets" ,__LINE__ -1 );
 	vanity_rmd_limits = (int*) realloc(vanity_rmd_limits,(vanity_rmd_targets+1) * sizeof(int));
 	vanity_rmd_limits[vanity_rmd_targets] = 0;
 	checkpointer((void *)vanity_rmd_limits,__FILE__,"realloc","vanity_rmd_limits" ,__LINE__ -1 );
@@ -5924,7 +5924,7 @@ int addvanity(char *target)	{
 			}
 		}
 		vanity_address_targets[vanity_rmd_targets] = (char*) calloc(targetsize+1,sizeof(char));
-		checkpointer((void *)vanity_address_targets[vanity_rmd_targets],__FILE__,"calloc","vanity_address_targets" ,__LINE__ -1 );
+		checkpointer((void *)vanity_address_targets[vanity_rmd_targets],__FILE__,"calloc","vanity_mddress_targets" ,__LINE__ -1 );
 		memcpy(vanity_address_targets[vanity_rmd_targets],target,targetsize+1);	// +1 to copy the null character
 		vanity_rmd_limits[vanity_rmd_targets] = r;
 		vanity_rmd_total+=r;
